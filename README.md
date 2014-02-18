@@ -15,7 +15,7 @@ Synopsis
         // This won't execute until both of the timeouts above have completed
     });
 
-    collect.all( function(event) {
+    collect.any( function(event) {
         setTimeout(event(function(){ console.log("two") }),2000);
         setTimeout(event(function(){ console.log("three") }),3000);
     })(function () {
