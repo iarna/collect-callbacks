@@ -13,7 +13,7 @@ collect.all = function(collector,cb) {
         cv.begin();
         var ended = false;
         if (ev) {
-            return function(){ arg[idx]=arguments; ev.apply(null, arguments); if (ended) return; ended=true; cv.end() }
+            return function(){ args[idx]=arguments; ev.apply(null, arguments); if (ended) return; ended=true; cv.end() }
         }
         else {
             return function(){ args[idx]=arguments; if (ended) return; ended=true; cv.end() }
