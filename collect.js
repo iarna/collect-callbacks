@@ -6,16 +6,17 @@ var collect = exports;
 
 collect.all = function(collector,cb) {
     var cv = CondVar();
-    var args = [];
+    var args = [], count = 0;
     cv.begin(function(){ this.send(null,args) });
     collector(function(ev){
+        var idx = count++;
         cv.begin();
         var ended = false;
         if (ev) {
-            return function(){ args.push(arguments); ev.apply(null, arguments); if (ended) return; ended=true; cv.end() }
+            return function(){ arg[idx]=arguments; ev.apply(null, arguments); if (ended) return; ended=true; cv.end() }
         }
         else {
-            return function(){ args.push(arguments); if (ended) return; ended=true; cv.end() }
+            return function(){ args[idx]=arguments; if (ended) return; ended=true; cv.end() }
         }
     });
     cv.end();
