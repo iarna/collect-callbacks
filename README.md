@@ -1,5 +1,5 @@
-event-collect
--------------
+collect-events
+--------------
 
 Aggregate many event emissions into one
 

@@ -1,7 +1,7 @@
 {
   "name": "collect-events",
   "description": "Aggregate many event emissions into one",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "collect.js",
   "license": "BSD",
   "scripts": {
