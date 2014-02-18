@@ -45,6 +45,10 @@ test('Collect with callbacks', function(t) {
     })
     .then(function() {
         t.is( cnt5, 12, "collect.all...promise: Trigger one 500ms event and 2 200ms events before completing");
+    })
+    .catch(function(e) {
+        t.fail("collect.all...promise: Trigger one 500ms event and 2 200ms events before completing");
+        console.error(e);
     });
 
     var cnt6 = 0;
@@ -54,5 +58,9 @@ test('Collect with callbacks', function(t) {
     })
     .then(function() {
         t.is( cnt6, 1, "collect.any...promise: Trigger only one 200ms events before completing");
+    })
+    .catch(function(e) {
+        t.fail("collect.any...promise: Trigger only one 200ms events before completing");
+        console.error(e);
     });
 });

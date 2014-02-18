@@ -7,7 +7,7 @@ var collect = exports;
 collect.all = function(collector,cb) {
     var cv = CondVar();
     var args = [];
-    cv.begin(function(){ this.send(args) });
+    cv.begin(function(){ this.send(null,args) });
     collector(function(ev){
         cv.begin();
         var ended = false;

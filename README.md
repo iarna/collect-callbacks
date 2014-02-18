@@ -8,17 +8,25 @@ Synopsis
 
     var collect = require('collect-events');
 
-    collect.all( function(event) {
-        setTimeout(event(function(){ console.log("two") }),2000);
-        setTimeout(event(function(){ console.log("three") }),3000);
-    })(function () {
+    collect.all( function(aggregate) {
+        setTimeout(aggregate(function(){ console.log("two") }),2000);
+        setTimeout(aggregate(function(){ console.log("three") }),3000);
+    })(function (error, args) {
         // This won't execute until both of the timeouts above have completed
     });
 
-    collect.any( function(event) {
-        setTimeout(event(function(){ console.log("two") }),2000);
-        setTimeout(event(function(){ console.log("three") }),3000);
-    })(function () {
+    collect.all( function(aggregate) {
+        setImmediate(aggregate(),'test','this');
+        setImmediate(aggregate(),1,2,3);
+    })(function (error, args) {
+        // args is an an array of arguments objects, the first with
+        // ['test,'this'] and the second with [1,2,3]
+    });
+
+    collect.any( function(aggregate) {
+        setTimeout(aggregate(function(){ console.log("two") }),2000);
+        setTimeout(aggregate(function(){ console.log("three") }),3000);
+    })(function (error, args) {
         // This will be called as soon as the shorter timer triggers.
         // Note that the longer one will still trigger, just after this is executed.
     });
@@ -44,6 +52,9 @@ optionally pass through your usual callback function in the listener argument.
 
 collect.all will call alldone (if passed) and fullfill the promisable when
 ALL of the events associated with it have triggered at least once.
+
+The promisable is resolved with the arguments of all of the events it
+collected.
 
 * collect.any( setup[, alldone] )[ -> promisable]
 
