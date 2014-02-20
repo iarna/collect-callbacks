@@ -1,12 +1,12 @@
-collect-events
---------------
+collect-callbacks
+-----------------
 
-Aggregate many event emissions into one
+Aggregate many callbacks into one
 
 Synopsis
 --------
 
-    var collect = require('collect-events');
+    var collect = require('collect-callbacks');
 
     collect.all( function(aggregate) {
         setTimeout(aggregate(function(){ console.log("two") }),2000);
@@ -34,13 +34,13 @@ Synopsis
 Description
 -----------
 
-Reduce a group of unrelated events into a single event. Either when the
-first event is emitted, or after all events have been emitted at least once.
+Reduce a group of unrelated callbacks into a single callback. Either when the
+first event is emitted, or after all callbacks have been emitted at least once.
 
 Functions
 ---------
 
-`var collect = require('collect-events');`
+`var collect = require('collect-callbacks');`
 
 * collect.all( setup[, alldone] )[ -> promisable]
 
@@ -51,15 +51,15 @@ to generate event handlers that will be part of this aggregation.  You can
 optionally pass through your usual callback function in the listener argument.
 
 collect.all will call alldone (if passed) and fullfill the promisable when
-ALL of the events associated with it have triggered at least once.
+ALL of the callbacks associated with it have triggered at least once.
 
-The promisable is resolved with the arguments of all of the events it
+The promisable is resolved with the arguments of all of the callbacks it
 collected.
 
 * collect.any( setup[, alldone] )[ -> promisable]
 
 Like collect.all but it triggers on the first of any of the aggregated
-events to complete.
+callbacks to complete.
 
 Promisables
 -----------

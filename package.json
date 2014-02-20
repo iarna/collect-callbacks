@@ -1,5 +1,5 @@
 {
-  "name": "collect-events",
+  "name": "collect-callbacks",
   "description": "Aggregate many event emissions into one",
   "version": "1.2.1",
   "main": "collect.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/iarna/collect-events.git"
+    "url": "git://github.com/iarna/collect-callbacks.git"
   },
   "dependencies": {
     "cvar": "~1.0.0",
