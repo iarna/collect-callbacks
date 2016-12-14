@@ -1,10 +1,10 @@
 'use strict';
 var collect = require('../collect.js');
 var timer = require('timer-ease');
-var test = require('tape');
+var test = require('tap').test;
 
 test('Collect with callbacks', function(t) {
-    t.plan(6);
+    t.plan(4);
 
     var cnt1 = 0;
     collect.all(function(event) {
@@ -20,22 +20,6 @@ test('Collect with callbacks', function(t) {
         timer.after(500,event(function(){ cnt2 += 10 }));
     },function() {
         t.is( cnt2, 1, "collect.any...cb: Trigger only one 200ms events before completing");
-    });
-
-    var cnt3 = 0;
-    collect.all(function(event) {
-        timer.every(200,event(function(){ ++cnt3 })).unref();
-        timer.after(500,event(function(){ cnt3 += 10 }));
-    })(function() {
-        t.is( cnt3, 12, "collect.all...retcall: Trigger one 500ms event and 2 200ms events before completing");
-    });
-
-    var cnt4 = 0;
-    collect.any(function(event) {
-        timer.every(200,event(function(){ ++cnt4 })).unref();
-        timer.after(500,event(function(){ cnt4 += 10 }));
-    })(function() {
-        t.is( cnt4, 1, "collect.any...retcall: Trigger only one 200ms events before completing");
     });
 
     var cnt5 = 0;

@@ -3,7 +3,7 @@
   "description": "Aggregate many event emissions into one",
   "version": "1.2.2",
   "main": "collect.js",
-  "license": "BSD",
+  "license": "ISC",
   "scripts": {
     "test": "node node_modules/tape/bin/tape $(find test -name '*.js')"
   },
@@ -11,12 +11,8 @@
     "type": "git",
     "url": "git://github.com/iarna/collect-callbacks.git"
   },
-  "dependencies": {
-    "cvar": "~1.0.0",
-    "promisable": "~1.2.0"
-  },
   "devDependencies": {
-    "tape": "~1.0.4",
+    "tap": "^8.0.1",
     "timer-ease": "~1.0.0"
   },
   "directories": {
