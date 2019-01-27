@@ -19,7 +19,7 @@ Synopsis
         setImmediate(aggregate(),'test','this');
         setImmediate(aggregate(),1,2,3);
     }, function (err, args) {
-        // args is an an array of arguments objects, the first with
+        // args is an array of arguments objects, the first with
         // ['test,'this'] and the second with [1,2,3]
     });
 
@@ -27,7 +27,7 @@ Synopsis
         setImmediate(aggregate(),'test','this');
         setImmediate(aggregate(),1,2,3);
     }.then(args) {
-        // args is an an array of arguments objects, the first with
+        // args is an array of arguments objects, the first with
         // ['test,'this'] and the second with [1,2,3]
     });
 
